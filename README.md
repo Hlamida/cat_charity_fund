@@ -17,25 +17,25 @@
 
 
 ## Чтобы запустить проект, нужно:
-Клонировать репозиторий:
+- Клонировать репозиторий:
 ```
 git clone git@github.com:Hlamida/cat_charity_fund.git
 ```
-Создать и активировать виртуальное окружение:
+- Создать и активировать виртуальное окружение:
 ```
 python3 -m venv venv
 source venv/bin/activate
 ```
-Обновить pip и установить зависимости из requirements.txt
+- Обновить pip и установить зависимости из requirements.txt
 ```
 python3 -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
-Создать .env файл:
+- Создать .env файл:
 ```
 touch .env
 ```
-... и заполнить его:
+- ... и заполнить его:
 ```
 APP_TITLE = 
 APP_DESCRIPTION = 
@@ -44,11 +44,11 @@ SECRET =
 FIRST_SUPERUSER_EMAIL =
 FIRST_SUPERUSER_PASSWORD =
 ```
-Выполнить миграции:
+- Выполнить миграции:
 ```
 alembic upgrade head
 ```
-Запустить проект:
+- Запустить проект:
 ```
 uvicorn app.main:app --reload
 ```
