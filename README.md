@@ -19,7 +19,7 @@
 ## Чтобы запустить проект, нужно:
 Клонировать репозиторий:
 ```
-git clone git@github.com:buschwaker/cat_charity_fund.git
+git clone git@github.com:Hlamida/cat_charity_fund.git
 ```
 Создать и активировать виртуальное окружение:
 ```
@@ -36,14 +36,14 @@ pip install -r requirements.txt
 touch .env
 ```
 ... и заполнить его:
-
->APP_TITLE = 
->APP_DESCRIPTION = 
->DATABASE_URL = 
->SECRET =
->FIRST_SUPERUSER_EMAIL =
->FIRST_SUPERUSER_PASSWORD =
-
+```
+APP_TITLE = 
+APP_DESCRIPTION = 
+DATABASE_URL = 
+SECRET =
+FIRST_SUPERUSER_EMAIL =
+FIRST_SUPERUSER_PASSWORD =
+```
 Выполнить миграции:
 ```
 alembic upgrade head
