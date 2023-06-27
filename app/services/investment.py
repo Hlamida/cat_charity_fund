@@ -17,12 +17,12 @@ def close_investment(obj: ModelType) -> None:
     obj.close_date = datetime.now()
 
 
-async def process_investment_charity(
-    invest_from: ModelType, invest_in: CRUDType, session: AsyncSession
+async def investment(
+    invest_from: ModelType, invest_to: CRUDType, session: AsyncSession
 ) -> ModelType:
     """Инвестирует при создании нового объекта"""
 
-    objects = await invest_in.get_multi_open(session)
+    objects = await invest_to.get_multi_open(session)
     for object in objects:
         for_invest = invest_from.full_amount - invest_from.invested_amount
         investitions = object.full_amount - object.invested_amount

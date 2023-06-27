@@ -8,12 +8,13 @@ from app.core.user import current_user, current_superuser
 from app.crud.charity_project import charity_crud
 from app.crud.donation import donations_crud
 from app.models import User
-from app.services.investment import process_investment_charity
+from app.services.investment import investment
 from app.schemas.donation import (
     DonationCreate,
     DonationDB,
     DonationDBFull,
 )
+
 
 router = APIRouter()
 
@@ -38,7 +39,7 @@ async def get_all_donations(
     '/my',
     response_model=List[DonationDB],
     response_model_exclude_none=True,
-    response_model_exclude={'user_id'}
+    response_model_exclude={'user_id'},
 )
 async def get_user_donations(
         session: AsyncSession = Depends(get_async_session),
@@ -65,6 +66,6 @@ async def create_new_donation(
     """Создаёт новое пожертвование для зарегистрированного пользователя."""
 
     donation = await donations_crud.create(project, session, user)
-    await process_investment_charity(donation, charity_crud, session)
+    await investment(donation, charity_crud, session)
 
     return donation

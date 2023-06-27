@@ -21,7 +21,7 @@ class CharityProjectCreate(CharityProjectBase):
         ..., min_length=MIN_STRING_LENGTH, max_length=MAX_STRING_LENGTH,
     )
     description: str = Field(
-        ..., min_length=MIN_STRING_LENGTH
+        ..., min_length=MIN_STRING_LENGTH,
     )
     full_amount: PositiveInt
 
