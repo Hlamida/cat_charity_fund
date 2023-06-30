@@ -9,3 +9,9 @@ class CharityProject(CharityBase):
         String(MAX_STRING_LENGTH), unique=True, nullable=False,
     )
     description = Column(Text, nullable=False)
+
+    def __repr__(self):
+        remains_amount = self.full_amount - self.invested_amount
+        return (
+            f'{self.name}. Осталось собрать: {remains_amount} руб.'
+        )

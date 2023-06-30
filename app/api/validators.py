@@ -1,5 +1,6 @@
-from fastapi import HTTPException
 from http import HTTPStatus
+
+from fastapi import HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.core.constants import DEFAULT_ZERO
@@ -14,7 +15,8 @@ async def check_name_duplicate(
     """Проверяет наличие дубликата проекта."""
 
     proj_id = await charity_crud.get_project_id_by_name(
-        project_name, session,
+        project_name,
+        session,
     )
     if proj_id is not None:
 
@@ -31,7 +33,8 @@ async def check_project_before_edit(
     """Проверяет наличие проекта по id."""
 
     project = await charity_crud.get(
-        obj_id=project_id, session=session,
+        obj_id=project_id,
+        session=session,
     )
     if not project:
 
@@ -43,14 +46,15 @@ async def check_project_before_edit(
     return project
 
 
-async def if_proj_closed(
+async def check_project_closed(
         project_id: int,
         session: AsyncSession,
 ) -> None:
     """Проверяет, закрыт ли проект."""
 
     project = await charity_crud.get(
-        obj_id=project_id, session=session,
+        obj_id=project_id,
+        session=session,
     )
     if project.fully_invested:
 
@@ -67,7 +71,8 @@ async def if_donations_poured(
     """Проверяет наличие инвестиций в проект."""
 
     project = await charity_crud.get(
-        obj_id=project_id, session=session,
+        obj_id=project_id,
+        session=session,
     )
     if project.invested_amount > DEFAULT_ZERO:
 
@@ -85,7 +90,8 @@ async def new_sum_less_invested(
     """Сравнивает новую сумму с инвестированной."""
 
     project = await charity_crud.get(
-        obj_id=project_id, session=session,
+        obj_id=project_id,
+        session=session,
     )
     if new_sum < project.invested_amount:
 

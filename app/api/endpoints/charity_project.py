@@ -7,7 +7,7 @@ from app.api.validators import (
     check_name_duplicate,
     check_project_before_edit,
     new_sum_less_invested,
-    if_donations_poured, if_proj_closed,
+    if_donations_poured, check_project_closed,
 )
 from app.core.db import get_async_session
 from app.core.user import current_superuser
@@ -70,13 +70,14 @@ async def update_project(
 ):
     """Изменяет проект по id. Только для superuser."""
 
-    await if_proj_closed(proj_id, session)
+    await check_project_closed(proj_id, session)
     if obj_in.full_amount:
         await new_sum_less_invested(obj_in.full_amount, proj_id, session)
     if obj_in.name:
         await check_name_duplicate(obj_in.name, session)
     project = await check_project_before_edit(
-        proj_id, session
+        proj_id,
+        session,
     )
     project = await charity_crud.update(
         db_obj=project,
@@ -100,7 +101,8 @@ async def remove_project(
     """Удаляет проект по id. Только для superuser."""
 
     project = await check_project_before_edit(
-        project_id, session,
+        project_id,
+        session,
     )
     await if_donations_poured(project_id, session)
     project = await charity_crud.remove(project, session)

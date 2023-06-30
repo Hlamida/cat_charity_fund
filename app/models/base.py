@@ -6,10 +6,6 @@ from app.core.constants import DEFAULT_ZERO
 from app.core.db import Base
 
 
-def time_now():
-    return datetime.now()
-
-
 class CharityBase(Base):
 
     __abstract__ = True
@@ -17,5 +13,5 @@ class CharityBase(Base):
     full_amount = Column(Integer, nullable=False)
     invested_amount = Column(Integer, default=DEFAULT_ZERO)
     fully_invested = Column(Boolean, default=False)
-    create_date = Column(DateTime, default=time_now)
+    create_date = Column(DateTime, default=datetime.now())
     close_date = Column(DateTime, default=None, nullable=True)
