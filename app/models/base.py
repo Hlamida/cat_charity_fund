@@ -13,5 +13,5 @@ class CharityBase(Base):
     full_amount = Column(Integer, nullable=False)
     invested_amount = Column(Integer, default=DEFAULT_ZERO)
     fully_invested = Column(Boolean, default=False)
-    create_date = datetime.now()
+    create_date = str(datetime.now())
     close_date = Column(DateTime, default=None, nullable=True)
