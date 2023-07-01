@@ -64,7 +64,7 @@ async def check_project_closed(
         )
 
 
-async def if_donations_poured(
+async def check_donations_poured(
         project_id: int,
         session: AsyncSession,
 ) -> None:
@@ -82,7 +82,7 @@ async def if_donations_poured(
         )
 
 
-async def new_sum_less_invested(
+async def check_new_sum_less_invested(
         new_sum: int,
         project_id: int,
         session: AsyncSession,

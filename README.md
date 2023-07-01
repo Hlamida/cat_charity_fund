@@ -36,11 +36,24 @@ pip install -r requirements.txt
 touch .env
 ```
 5. ... и заполнить его:
+Заголовок приложения:
 ```
 APP_TITLE = 
+```
+Описание приложения:
+```
 APP_DESCRIPTION = 
+```
+Адрес базы данных:
+```
 DATABASE_URL = 
+```
+Пароль для доступа к базе:
+```
 SECRET =
+```
+Реквизиты для создания superuser при первом запуске:
+```
 FIRST_SUPERUSER_EMAIL =
 FIRST_SUPERUSER_PASSWORD =
 ```
@@ -52,3 +65,8 @@ alembic upgrade head
 ```
 uvicorn app.main:app --reload
 ```
+
+Технологический стек:
+Python, FastAPI, SQLAlchemy
+
+Автор: [Кулагин Александр](https://t.me/username/Kulagin_Aleksandr)
