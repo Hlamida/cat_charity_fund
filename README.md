@@ -35,7 +35,8 @@ pip install -r requirements.txt
 ```
 touch .env
 ```
-5. ... и заполнить его:
+5. ... и заполнить его. 
+
 Заголовок приложения:
 ```
 APP_TITLE = 
